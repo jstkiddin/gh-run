@@ -1,0 +1,159 @@
+
+:root {
+  --main-bg-color: #002366;
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  position:static;
+  margin:auto;
+  width:1500px;
+  height:23em;
+  /* border:1px solid #000;  */
+
+
+}
+
+audio {
+  display: none;
+}
+
+.main::before{
+  content: "";
+  background-size: 20px;
+  filter:opacity(0.05);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-image: url("/ghost_up/img/bg_ghost.png");
+  z-index: -1;
+  /* background-size: 62px 62px; */
+  
+}
+
+
+#title svg{
+  transform: scale(2.5);
+  z-index: 2;
+}
+#title{
+  text-align: center;
+  line-height: 50em;
+}
+
+#contr{
+  top:62%;
+}
+#start{
+  top:55%;
+}
+
+.btn.m#start a{
+  display:inline-block;
+  width: 300px;
+  height: 50px;
+
+  color:#b9b8b8;
+  text-decoration: none;
+}
+.btn.m{
+  position:absolute;
+
+  width: 300px;
+  height: 50px;
+  font-size: 1.8em;
+  line-height: 50px;
+
+  border-radius: 2%;
+  
+  left:40%;
+  transition: transform .1s ease-in-out;
+}
+
+.btn{
+  width: 100px;
+  height: 20px;
+
+  font-size: .6em;
+  line-height: 20px;
+  text-align: center;
+  color:#b9b8b8;
+
+  border: #b9b8b8 3px solid;
+  background-color: #fff;
+
+  cursor: pointer;
+}
+
+.button .btn{
+display: inline-block;
+}
+
+.btn:hover, .btn.m#start a:hover{
+  color: #333333;
+}
+
+.btn:hover{
+  border: #333333 3px solid;
+}
+.btn.m:hover{
+  transform: scale(1.05);
+}
+.btn.m:active{
+  transform: scale(1.02);
+}
+
+
+
+
+#ghost{
+  position:absolute;
+  top:28%;
+  left:48.5%;
+
+  transform: scale(2);
+
+  height: 30px; 
+  width: 10%;
+
+  animation: .8s infinite alternate ease-in-out levitation;
+}
+
+@keyframes levitation {
+  from{
+    margin-top:1%;
+  }
+  to{
+    margin-top:1.5%;
+  }
+}
+
+#ghost rect.body{
+  height: 12px;
+}
+#ghost rect.inner{
+  fill: #fff;
+  width: 15px;
+  x:12.5px;
+}
+
+#ghost rect.outer{
+  width: 20px;
+  x: 10px;
+}
+
+#ghost rect.eyes{
+  y:19px;
+  width:3px;
+  height:5px; 
+}
+
+#ghost .body.inner{
+  fill: #fff;
+  height:20px;
+}

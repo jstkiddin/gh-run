@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GH-Run</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/upper_menu.css">
+</head>
+<body>
+  <div class="btn upper" id="music">
+    <img src="/ghost_up/img/310810.svg" alt="music on/off" style="width:40px; height:40px">
+  </div>
+
+  <div id="ghost" class>
+    <svg x="10" y="10" width="30" height="43">
+      <g>
+        <rect y="10" height="25" ry="10" class="head outer"/>
+        <rect y="26" class="body outer"/>
+        <rect y="12" height="20" ry="8" class="head inner"/>
+        <rect y="25" class="body inner" />
+
+        <path d="M22,38 C24,38 25,41 29,37 С10,35 20,35 Z" style="fill:none; stroke:#000; stroke-width:2"></path>
+        <path d="M11,37 C15,42 18,30 23,38 С10,35 20,35 Z" style="fill:none; stroke:#000; stroke-width:2"></path>
+        <!-- <path d="M11,35 c0,14 15,-10 18,2 " style="fill:none; stroke:#000; stroke-width:2"></path> -->
+       
+        <rect x="18" class="eyes"/>
+        <rect x="24" class="eyes"/>
+      </g>
+    </svg>
+  </div>
+
+  
+  <audio id="main_audio" src="/ghost_up/audio/main_game.mp3"></audio>
+</body>
+<script src="/ghost_up/js/controls.js"></script>
+<script src="/ghost_up/js/music.js"></script>
+</html>
