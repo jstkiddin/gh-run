@@ -30,7 +30,7 @@ audio {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-image: url("/ghost_up/img/bg_ghost.png");
+  background-image: url("/img/bg_ghost.png");
   z-index: -1;
   /* background-size: 62px 62px; */
   
@@ -53,6 +53,14 @@ audio {
   top:55%;
 }
 
+.btn.m a{
+  display:inline-block;
+  width: 300px;
+  height: 50px;
+
+  color:#b9b8b8;
+  text-decoration: none;
+}
 .btn.m{
   position:absolute;
 
@@ -78,15 +86,19 @@ audio {
 
   border: #b9b8b8 3px solid;
   background-color: #fff;
-  /* filter:opacity(.5); */
+
+  cursor: pointer;
 }
 
 .button .btn{
 display: inline-block;
 }
 
-.btn:hover{
+.btn:hover, .btn.m a:hover{
   color: #333333;
+}
+
+.btn:hover{
   border: #333333 3px solid;
 }
 .btn.m:hover{
@@ -101,15 +113,16 @@ display: inline-block;
 
 #ghost{
   position:absolute;
-  top:28%;
-  left:48.5%;
+  top:29%;
+  left:44.5%; 
 
-  transform: scale(2);
-
-  height: 30px; 
-  width: 10%;
-
+  height: 33px; 
+  width: 20.5px;
+  
   animation: .8s infinite alternate ease-in-out levitation;
+
+  transform: scale(1.5);
+  /* background-color:aquamarine; */
 }
 
 @keyframes levitation {
@@ -145,3 +158,117 @@ display: inline-block;
   fill: #fff;
   height:20px;
 }
+
+#ghost rect.eyes{
+  y:19px;
+  width:3px;
+  height:5px; 
+}
+
+.popup{
+  display: none;
+
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  left: 0;
+  top:0;
+
+  background-color: rgba(0, 0, 0, 0.363);
+  z-index: 5;
+}
+
+.popup.active{
+  display: block;
+}
+
+
+
+.popup-container{
+  display: flex;
+  align-items: center; 
+
+
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.popup-body{
+  margin:auto;
+
+  position: relative;
+
+  width: 500px;
+  height: 600px;
+
+  background-color: #fff;
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.popup-close{
+
+  position:absolute;
+
+  top: 15px;
+  right: 15px;
+
+  width:20px;
+  height:20px;
+
+  /* color: #b9b8b8; */
+  border: #b9b8b8 solid 2px;
+  transition: .4s ease-in-out border-color;
+
+  cursor: pointer;
+}
+
+.popup-close:hover{
+  border-color: #333333;
+
+}
+.popup-close:active{
+  color:#fff;
+  background-color: rgba(105, 105, 105, 0.514);
+}
+
+table{
+  width:100%;
+  height: 100%;
+  font-weight: 600;
+}
+
+table .key{
+width: 40%;
+}
+
+table span{
+  display: inline-block;
+
+  width:50px;
+  height:50px;
+
+  line-height: 50px;
+
+  border: #002366 solid 3px;
+
+  box-shadow: -2px 2px 5px#8d8d8d9a;
+
+  animation: .5s infinite alternate  key-blink;
+}
+
+@keyframes key-blink {
+  from{
+    border: #002366 solid 3px;
+  }
+  to{
+    border: #eed600 solid 3px;
+  }
+}
+
+
+

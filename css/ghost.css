@@ -1,0 +1,63 @@
+#ghost{
+
+  /* fill:rgba(0, 0, 0, 0.212); */
+
+  position:absolute;
+  top:0px;
+  left:0px; 
+
+  height: 33px; 
+  width: 20.5px;
+
+  animation: .8s infinite alternate ease-in-out levitation;
+  
+  /* background-color:aquamarine;  */
+}
+path{
+  /* stroke:#fff; */
+}
+
+.ghost-wrapper{
+  position:relative;
+
+
+  transition: left .2s ease-in-out, top .1s ease-in-out;
+
+  height:37px;
+  width: 20px;
+  /* background-color: black; */
+}
+
+@keyframes levitation {
+  from{
+    padding-top:-1%;
+  }
+  to{
+    padding-top:20%;
+  }
+}
+
+#ghost rect.body{
+  height: 12px;
+}
+#ghost rect.inner{
+  fill: #fff;
+  width: 15px;
+  x:2.5px;
+}
+
+#ghost rect.outer{
+  width: 20px;
+  x: 0px;
+}
+
+#ghost rect.eyes{
+  y:10px;
+  width:3px;
+  height:5px; 
+}
+
+#ghost .body.inner{
+  fill: #fff;
+  height:14.5px;
+}

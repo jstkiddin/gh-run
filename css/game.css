@@ -1,0 +1,14 @@
+.game-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.game{
+  /* margin: 5em 2em 2em 2em; */
+  position: relative;
+
+  margin-top: 5em;
+  height:864px;
+  width:1536px;
+  background-color: blueviolet;
+}

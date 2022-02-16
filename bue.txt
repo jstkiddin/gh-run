@@ -1,0 +1,65 @@
+<div id="ghost" class>
+      <svg x="10" y="10" width="30" height="43">
+        <g>
+          <rect y="10" height="25" ry="10" class="head outer"/>
+          <rect y="26" class="body outer"/>
+          <rect y="12" height="20" ry="8" class="head inner"/>
+          <rect y="25" class="body inner" />
+
+          <path d="M22,38 C24,38 25,41 29,37 С10,35 20,35 Z" style="fill:none; stroke:#000; stroke-width:2"></path>
+          <path d="M11,37 C15,42 18,30 23,38 С10,35 20,35 Z" style="fill:none; stroke:#000; stroke-width:2"></path>
+          <!-- <path d="M11,35 c0,14 15,-10 18,2 " style="fill:none; stroke:#000; stroke-width:2"></path> -->
+         
+          <rect x="18" class="eyes"/>
+          <rect x="24" class="eyes"/>
+        </g>
+      </svg>
+    </div>
+
+//css
+
+#ghost{
+  height: 30px; 
+  width: 10%;
+  animation: .8s infinite alternate ease-in-out levitation;
+}
+
+@keyframes levitation {
+  from{
+    margin-top:1%;
+  }
+  to{
+    margin-top:1.5%;
+  }
+}
+
+#ghost rect.body{
+  height: 12px;
+}
+#ghost rect.inner{
+  fill: #fff;
+  width: 15px;
+  x:12.5px;
+}
+
+#ghost rect.outer{
+  width: 20px;
+  x: 10px;
+}
+
+#ghost rect.eyes{
+  y:19px;
+  width:3px;
+  height:5px; 
+}
+
+#ghost .body.inner{
+  fill: #fff;
+  height:20px;
+}
+
+#ghost rect.eyes{
+  y:19px;
+  width:3px;
+  height:5px; 
+}
