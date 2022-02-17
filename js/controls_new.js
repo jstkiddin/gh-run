@@ -1,19 +1,53 @@
-const ghost = document.querySelector('.ghost-wrapper')
+// const ghost = document.querySelector('.ghost-wrapper')
 // const ghost = document.querySelector('#ghost')
 const game = document.querySelector('.game')
 console.log('game offset left:', game.offsetLeft)
 console.log('game offset top:', game.offsetTop)
-console.log(ghost.offsetLeft)
-console.log(ghost.offsetTop)
-// const
+// console.log(ghost.offsetLeft)
+// console.log(ghost.offsetTop)
 
-class Ghost{
-  update(){
-    ghost.style.left = ghost.offsetLeft + 10 +"px";
+class Entity{
+  constructor(str){
+    this.entity = document.querySelector(str)
   }
+
+  getTopPosition(){
+    return this.entity.offsetTop
+  }
+
+  getLeftPosition(){
+    return this.entity.offsetLeft
+  }
+
+  static jump(){
+    this.entity.style.top= this.entity.offsetTop - 20 +"px";
+  }
+  
+  moveDown(){
+    this.entity.style.top= this.entity.offsetTop + 20 +"px";
+  }
+
 }
 
+class Ghost extends Entity{
+    constructor(str){
+      super(str)
+    }
 
+    moveLeft = () =>{
+      let left = parseInt(window.getComputedStyle(this.entity).getPropertyValue('left'))
+      this.entity.style.left = this.entity.offsetLeft - 10 +"px";
+    }
+    moveRight = () =>{
+      let left = parseInt(window.getComputedStyle(this.entity).getPropertyValue('left'))
+      this.entity.style.left = this.entity.offsetLeft + 10 +"px";
+    }
+}
+
+const ghost = new Ghost('.ghost-wrapper')
+// console.log()
+console.log('left entity: ',ghost.getLeftPosition())
+console.log('top entity: ',ghost.getTopPosition())
 
 //  while (game){
 //   ghost.style.left = ghost.offsetLeft + 10 +"px";
@@ -33,59 +67,32 @@ class Ghost{
 
 // let game_triger = true;
 
-const moveLeft = () =>{
-  let left = parseInt(window.getComputedStyle(ghost).getPropertyValue('left'))
-  ghost.style.left = ghost.offsetLeft - 10 +"px";
-}
-const moveLeft = () =>{
-  let left = parseInt(window.getComputedStyle(ghost).getPropertyValue('left'))
-  ghost.style.left = ghost.offsetLeft + 10 +"px";
-}
-
-function moveDown(){
-  ghost.style.top= ghost.offsetTop + 20 +"px";
-}
 
 addEventListener('keydown', (e)=>{
   e = e || window.event
   if ((e.keyCode == '38')||(e.keyCode =='87')) { 
-      ghost.style.top= ghost.offsetTop - 20 +"px";
-
-      console.log('keydown: ',ghost.offsetTop)
       // setTimeout(goDown, 1000);
    }
    else if ((e.keyCode == '37')||(e.keyCode =='65')) {
-    console.log(ghost.style.left >= 0 && ghost.style.left <= 1544)
-     if(ghost.offsetLeft > 0 ){
-       setInterval()
-      ghost.style.left = ghost.offsetLeft - 10 +"px";
-     }
-
-     console.log(ghost.offsetLeft)
+      if(ghost.getLeftPosition() > 0 ){
+        ghost.moveLeft()
+      }
+    console.log('clsss entity: ', ghost.entity.offsetLeft)
+    //  console.log(ghost.offsetLeft)
     
-    //  if(entity.x >0){
-    //   entity.velosity.x = -1*speed
-    //  }
    }
    else if ((e.keyCode == '39')||(e.keyCode =='68')) {
-    console.log(ghost.style.left >= 0 && ghost.style.left <= 1544)
-     if(ghost.offsetLeft <= 1544){
-      ghost.style.left = ghost.offsetLeft + 10 +"px";
+     if(ghost.getLeftPosition() <= 1544){
+      ghost.moveRight()
 
-      console.log(ghost.offsetLeft)
      }
-    
-    // if(entity.x <canvas.width){
-    //   entity.velosity.x = speed
-    // } 
-  }
-  
+  } 
 })
 
 addEventListener('keyup', (e)=>{
   e = e || window.event
   if ((e.keyCode == '38')||(e.keyCode =='87')) { 
-      setTimeout(moveDown(), 500)
+      setTimeout(ghost.moveDown(), 500)
       console.log('keyup: ',ghost.offsetTop)
    }
 })

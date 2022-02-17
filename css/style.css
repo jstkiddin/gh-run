@@ -8,13 +8,11 @@
   padding:0;
 }
 body{
-  position:static;
+  position:fixed;
   margin:auto;
-  width:1500px;
+  width:100%;
   height:23em;
   /* border:1px solid #000;  */
-
-
 }
 
 audio {
@@ -271,4 +269,32 @@ table span{
 }
 
 
+@media screen and (max-width: 1366px) {
+  /* body{
 
+  } */
+
+  #title{
+    transform: scale(.8);
+    line-height: 35em;
+  }
+
+  #contr{
+    top:76%;
+  }
+  #start{
+    top:65%;
+  }
+
+  .btn.m{
+    left:35%;
+  }
+
+  .btn.m:hover{
+    transform: scale(1.05);
+  }
+  .btn.m:active{
+    transform: scale(1.02);
+  }
+
+}
