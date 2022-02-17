@@ -4,6 +4,8 @@ class Block{
     this.type = type
   }
 
+  // get
+
   setClass(){
     this.element.setAttribute('class', this.type)
   }

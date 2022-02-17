@@ -1,12 +1,47 @@
-import Block from './js/block.js'
+// import Block from './block.js'
 
 const game = document.querySelector('.game')
 
-const block = new Block('platform')
+class Block{
+  constructor(type){
+    this.element = document.createElement('div')
+    this.type = type
+  }
+
+  setClass(){
+    this.element.classList.add(this.type)
+  }
+
+  getClass(){
+   return this.element.className
+  }
+
+  getID(){
+    return this.element.getAttribute('id')
+   }
+
+  setID(){
+    this.element.setAttribute('id', this.type)
+  }
+}
+// .setClass().setID()
 const hole = new Block('hole')
+hole.setClass()
 
-console.log(block.type)
+const block = new Block('platform')
+block.setClass()
+console.log(block.getClass())
 
+console.log(hole.getClass())
+
+game.appendChild(block.element)
+game.appendChild(hole.element)
+
+
+let random = Math.floor(Math.random()*360)
+/**
+ * there goes characters controls ect
+ */
 class Entity{
   constructor(str){
     this.entity = document.querySelector(str)

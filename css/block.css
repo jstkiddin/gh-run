@@ -1,0 +1,22 @@
+.platform, .hole{
+  position: relative;
+  top:92%;
+
+  height: 25px;
+}
+
+.platform{
+  width:100%;
+  background-color: black;
+}
+
+.hole{
+  width:40px;
+  background-color: #fff;
+  
+  margin-top: -25px;
+}
+
+.red-platform{
+  
+}
