@@ -244,6 +244,10 @@ table .key{
 width: 40%;
 }
 
+table span#space{
+  width: 120px;
+}
+
 table span{
   display: inline-block;
 

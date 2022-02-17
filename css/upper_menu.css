@@ -1,11 +1,35 @@
-.btn.upper#music{
+.upper-menu{
+  display: flex;
   position:absolute;
 
   right:3%;
   top:2%;
+}
 
-  width:50px;
-  height:50px;
+.btn.upper{
+  margin-right: 5%;
+
+  width:35px;
+  height:35px;
+
+  line-height: 35px;
+
+  font-size: 2em;
 
   padding-top: 5px;
 }
+
+.btn.upper img{
+  width:30px;
+  height:30px;
+
+  opacity: 0.4;
+}
+
+.btn.upper.pressed img{
+  opacity: 1;
+}
+
+.btn.upper.pressed{
+  color: #000;
+} 

@@ -1,10 +1,11 @@
-// const ghost = document.querySelector('.ghost-wrapper')
-// const ghost = document.querySelector('#ghost')
+import Block from './js/block.js'
+
 const game = document.querySelector('.game')
-console.log('game offset left:', game.offsetLeft)
-console.log('game offset top:', game.offsetTop)
-// console.log(ghost.offsetLeft)
-// console.log(ghost.offsetTop)
+
+const block = new Block('platform')
+const hole = new Block('hole')
+
+console.log(block.type)
 
 class Entity{
   constructor(str){
@@ -19,7 +20,7 @@ class Entity{
     return this.entity.offsetLeft
   }
 
-  static jump(){
+  jump(){
     this.entity.style.top= this.entity.offsetTop - 20 +"px";
   }
   
@@ -71,11 +72,11 @@ console.log('top entity: ',ghost.getTopPosition())
 addEventListener('keydown', (e)=>{
   e = e || window.event
   if ((e.keyCode == '38')||(e.keyCode =='87')) { 
-      // setTimeout(goDown, 1000);
+      ghost.jump()
    }
    else if ((e.keyCode == '37')||(e.keyCode =='65')) {
       if(ghost.getLeftPosition() > 0 ){
-        ghost.moveLeft()
+        interval = setInterval(ghost.moveLeft(),2) 
       }
     console.log('clsss entity: ', ghost.entity.offsetLeft)
     //  console.log(ghost.offsetLeft)
@@ -83,8 +84,8 @@ addEventListener('keydown', (e)=>{
    }
    else if ((e.keyCode == '39')||(e.keyCode =='68')) {
      if(ghost.getLeftPosition() <= 1544){
-      ghost.moveRight()
-
+       
+      interval = setInterval(ghost.moveRight(),2)
      }
   } 
 })
@@ -93,6 +94,8 @@ addEventListener('keyup', (e)=>{
   e = e || window.event
   if ((e.keyCode == '38')||(e.keyCode =='87')) { 
       setTimeout(ghost.moveDown(), 500)
-      console.log('keyup: ',ghost.offsetTop)
+   }
+   else{
+     clearInterval(interval)
    }
 })
