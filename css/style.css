@@ -28,7 +28,7 @@ audio {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-image: url("/img/bg_ghost.png");
+  background-image: url("img/bg_ghost.png");
   z-index: -1;
   /* background-size: 62px 62px; */
   

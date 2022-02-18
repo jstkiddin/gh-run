@@ -10,5 +10,6 @@
   margin-top: 5em;
   height:864px;
   width:1536px;
-  background-color: blueviolet;
+  border: 1px #000 solid;
+  /* background-color: blueviolet; */
 }

@@ -1,8 +1,8 @@
 .platform, .hole{
   position: relative;
-  top:92%;
-
-  height: 25px;
+  top:87%;
+  left:0%;
+  height: 32px;
 }
 
 .platform{
@@ -14,7 +14,7 @@
   width:40px;
   background-color: #fff;
   
-  margin-top: -25px;
+  margin-top: -32px;
 }
 
 .red-platform{

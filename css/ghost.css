@@ -13,8 +13,9 @@
   
   /* background-color:aquamarine;  */
 }
-path{
-  /* stroke:#fff; */
+
+#ghost.transparant{
+  filter: opacity(0.7);
 }
 
 .ghost-wrapper{
@@ -60,4 +61,36 @@ path{
 #ghost .body.inner{
   fill: #fff;
   height:14.5px;
+}
+
+
+/* 
+there comes a boy
+*/
+
+
+
+#boy{
+  /* fill:rgba(0, 0, 0, 0.212); */
+  position:absolute;
+  top:0px;
+  left:0px; 
+  transition:  top .1s ease-in-out;
+  height: 33px; 
+  width: 20.5px;
+  transform:scale(.7)
+  
+  /* background-color:aquamarine;  */
+}
+
+.boy-wrapper{
+
+  margin-left: 200px;
+  position:relative;
+
+  /* left .2s ease-in-out, */
+
+  height:37px;
+  width: 20px;
+  background-color: rgb(255, 0, 0); 
 }
