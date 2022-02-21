@@ -17,6 +17,7 @@ class Block{
 
   setClass(){
     this.element.classList.add(this.type)
+    
   }
 
   getClass(){
@@ -24,7 +25,7 @@ class Block{
   }
 
   setLeftPosition(random){
-    this.element.style.left = random + "px;"
+    this.element.style.left = this.element.offsetLeft+random + "px";
   }
 
   getID(){
@@ -35,7 +36,7 @@ class Block{
     this.element.setAttribute('id', this.type)
   }
 }
-// .setClass().setID()
+
 const hole = new Block('hole')
 hole.setClass()
 

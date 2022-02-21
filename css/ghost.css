@@ -13,9 +13,13 @@
   
   /* background-color:aquamarine;  */
 }
+/* 
+#ghost.left svg{
+  transform: translateZ(90deg);
+} */
 
 #ghost.transparant{
-  filter: opacity(0.7);
+  filter: opacity(0.2);
 }
 
 .ghost-wrapper{

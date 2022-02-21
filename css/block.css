@@ -1,19 +1,19 @@
 .platform, .hole{
   position: relative;
   top:87%;
-  left:0%;
   height: 32px;
 }
 
 .platform{
   width:100%;
+  left:0px;
   background-color: black;
 }
 
 .hole{
   width:40px;
   background-color: #fff;
-  
+  left:0px;
   margin-top: -32px;
 }
 
