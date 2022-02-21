@@ -1,6 +1,8 @@
 .game-wrapper{
   display: flex;
   justify-content: center;
+
+  /* overflow-x: hidden; */
 }
 
 .game{
@@ -8,7 +10,7 @@
   position: relative;
 
   margin-top: 5em;
-  height:864px;
+  height:550px;
   width:1536px;
   border: 1px #000 solid;
   /* background-color: blueviolet; */

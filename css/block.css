@@ -1,6 +1,6 @@
 .platform, .hole{
   position: relative;
-  top:87%;
+  top:73%;
   height: 32px;
 }
 
@@ -15,6 +15,15 @@
   background-color: #fff;
   left:0px;
   margin-top: -32px;
+}
+
+.platform.jump{
+  position: relative;
+  height: 32px;
+  width:25px;
+  background-color: blue;
+  top:73%;
+  left:0px;
 }
 
 .red-platform{

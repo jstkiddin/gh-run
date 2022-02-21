@@ -24,7 +24,7 @@
 
 .ghost-wrapper{
   position:relative;
-
+  top:470px;
   /* left .2s ease-in-out, */
   transition:  top .1s ease-in-out;
 

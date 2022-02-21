@@ -17,7 +17,14 @@ class Block{
 
   setClass(){
     this.element.classList.add(this.type)
-    
+  }
+
+  setNewClass(newClass){
+    this.element.classList.add(newClass)
+  }
+
+  removeNewClass(newClass){
+    this.element.classList.remove(newClass)
   }
 
   getClass(){
@@ -39,22 +46,28 @@ class Block{
 
 const hole = new Block('hole')
 hole.setClass()
+// let random = Math.floor(Math.random()*360)
+hole.setLeftPosition(Math.floor(Math.random()*360))
 
 const block = new Block('platform')
 block.setClass()
 console.log(block.getClass())
 
+const jump_block = new Block('platform')
+jump_block.setClass()
+jump_block.setNewClass('jump')
+jump_block.setLeftPosition(Math.floor(Math.random()*360))
+console.log(jump_block.getClass())
+
 console.log(hole.getClass())
 
-
+game.appendChild(jump_block.element)
 game.appendChild(block.element)
 game.appendChild(hole.element)
 //getLeftPosition())
 
 
-let random = Math.floor(Math.random()*360)
-console.log('random', random)
-hole.setLeftPosition(random)
+
 
 /**
  * there goes characters controls ect
