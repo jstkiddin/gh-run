@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
 
-  /* overflow-x: hidden; */
+ 
 }
 
 .game{
@@ -13,5 +13,41 @@
   height:550px;
   width:1536px;
   border: 1px #000 solid;
+  overflow: hidden; 
   /* background-color: blueviolet; */
+}
+
+.text{
+  display: none;
+}
+
+.text.visible{
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 200px;
+  font-size: 6em;
+}
+
+#lost{}
+
+
+#go{
+  left: 680px;
+  animation: 1s infinite ease-in-out text-blink;
+}
+
+@keyframes text-blink{
+  10%{
+    color:#000
+  }
+  40%{
+    color:rgb(255, 251, 0)
+  }
+  70%{
+    color:rgb(255, 0, 0)
+  }
+  100%{
+    color:#000
+  }
 }

@@ -5,10 +5,14 @@ const menu_btn = document.querySelector(".menu")
 const main_audio = document.querySelector("#main_audio")
 const hover_audio = document.querySelector("#hover_menu")
 const click_audio = document.querySelector("#click_menu")
+const text = document.querySelector(".text")
+
 
   window.addEventListener('load', () => {
-      main_audio.volume = 0.2
-      main_audio.play()
+    main_audio.pause();
+    window.setTimeout(() => {
+      text.classList.remove("visible")
+    },1000)
    })
 
 music.addEventListener("click", () => {
@@ -18,13 +22,15 @@ music.addEventListener("click", () => {
     
     // icon.classList.add('fa-volume-mute')
 
-    music.classList.add
+    music.classList.add("pressed")
+    // music.classList.add
     
   } else {
     main_audio.pause();
+    music.classList.remove("pressed")
     // icon.classList.remove('fa-volume-mute')
   }
-  music.classList.add("fade")
+  
 })
 
  menu_btn.addEventListener('mouseover', () => {
@@ -36,4 +42,9 @@ music.addEventListener("click", () => {
    click_audio.volume = .5
    click_audio.play()
  })
+
+
+ 
+
+  
 

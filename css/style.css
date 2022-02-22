@@ -28,7 +28,7 @@ audio {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-image: url("img/bg_ghost.png");
+  background-image: url("img/bg_ghost.svg");
   z-index: -1;
   /* background-size: 62px 62px; */
   
@@ -272,6 +272,29 @@ table span{
   }
 }
 
+@media screen and (min-width: 1366px) {
+  #ghost{
+    top:77%;
+    left:44.5%; 
+  }
+  #contr{
+    top:160%;
+  }
+  #start{
+    top:140%;
+  }
+
+  .btn.m{
+    left:40%;
+  }
+
+  .btn.m:hover{
+    transform: scale(1.05);
+  }
+  .btn.m:active{
+    transform: scale(1.02);
+  }
+}
 
 @media screen and (max-width: 1366px) {
   /* body{
