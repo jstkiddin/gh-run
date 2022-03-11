@@ -1,8 +1,6 @@
 .game-wrapper{
   display: flex;
-  justify-content: center;
-
- 
+  justify-content: center; 
 }
 
 .game{
@@ -49,5 +47,18 @@
   }
   100%{
     color:#000
+  }
+}
+
+
+@media screen and (min-width: 1366px) and (max-width: 1535px) {
+ 
+  .game{
+    margin-top: 4em;
+    width:1366px;
+  }
+ 
+  #go{
+    left: 44%;
   }
 }

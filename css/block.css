@@ -50,3 +50,16 @@
 .one .two{
   transition: left 1s ease-in-out;
 }
+
+
+/* @media screen and (min-width: 1366px) and (max-width: 1535px) {
+ 
+  .game{
+    margin-top: 4em;
+    width:1366px;
+  }
+ 
+  #go{
+    left: 44%;
+  }
+} */

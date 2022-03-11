@@ -301,9 +301,16 @@ table span{
 
   } */
 
+
+
   #title{
     transform: scale(.8);
     line-height: 35em;
+  }
+
+  #ghost{
+    top:50%;
+    left:43.5%; 
   }
 
   #contr{
@@ -323,5 +330,7 @@ table span{
   .btn.m:active{
     transform: scale(1.02);
   }
+
+
 
 }

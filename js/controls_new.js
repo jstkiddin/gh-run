@@ -6,6 +6,16 @@ let game_blocks_two = document.querySelector('.game-blocks.two')
 let gameBool = false
 let odd = false
 let start = true
+let random_width,width
+
+
+if(window.screen.width>=1536){
+  width = 1536;
+  random_width = 1500
+}else if((window.screen.width>1365)&&(window.screen.width<1536)){
+  width = 1366;
+  random_width = 1300
+}
 
 /**
  * Creating blocks:
@@ -61,23 +71,13 @@ const hole = new Block('hole')
 const block = new Block('platform')
 const jump_block = new Block('platform')
 
-function clear(game_blocks,flag){
-  if(flag){
-    block.element.remove()
-    hole.element.remove()
-    jump_block.element.remove()
-  }
-
-}
-
-
 
 function createBlocks(game_blocks,flag){
   const hole = new Block('hole')
   const block = new Block('platform')
   const jump_block = new Block('platform')
 
-  let random_hole = Math.floor(Math.random()*1500)
+  let random_hole = Math.floor(Math.random()*random_width)
   let random_jump
   // hole white block
   
@@ -94,7 +94,7 @@ function createBlocks(game_blocks,flag){
   jump_block.setClass()
   jump_block.setNewClass('jump')
   while((random_jump+25>random_hole)&&(random_jump<random_hole+40)){
-    random_jump = Math.floor(Math.random()*1500)
+    random_jump = Math.floor(Math.random()*random_width)
   }
   jump_block.setLeftPosition(random_jump)
 
@@ -122,16 +122,15 @@ function createBlocks(game_blocks,flag){
       game_blocks_one.style.left="0px";
       gameBool =true
       createBlocks(game_blocks_two,false)
-      game_blocks_two.style.left = '1536px';   
+      game_blocks_two.style.left = width+'px';   
       game_blocks_two.style.top = "341px"
       // game_blocks_one.style.left="0px";
     }else{
       
-      console.log("left two ",game_blocks_two.offsetLeft)
+      // console.log("left two ",game_blocks_two.offsetLeft)
       if(!odd){
         if(game_blocks_two.offsetLeft < 0){
           game_blocks_two.style.top = "405px"
-          // clear(game_blocks_one, true)
           createBlocks(game_blocks_one,true)
           game_blocks_one.style.left = game_blocks_two.offsetLeft+1536+'px';
           game_blocks_one.style.top = "341px"
