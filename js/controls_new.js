@@ -6,7 +6,8 @@ let game_blocks_two = document.querySelector('.game-blocks.two')
 let gameBool = false
 let odd = false
 let start = true
-let random_width,width
+let random_width,width 
+let jump_offset_one = 0, jump_offset_two = 0
 
 
 if(window.screen.width>=1536){
@@ -79,6 +80,7 @@ class Block{
 
 
 function createBlocks(game_blocks,flag){
+
   const hole = new Block('hole')
   const block = new Block('platform')
   const jump_block = new Block('platform')
@@ -99,12 +101,14 @@ function createBlocks(game_blocks,flag){
   jump_block.setClass()
   jump_block.setNewClass('jump')
 
+  
   // 
   while((random_jump+25>random_hole)&&(random_jump<random_hole+40)){
     random_jump = Math.floor(Math.random()*random_width)
   }
-
+  
   jump_block.setLeftPosition(random_jump)
+
 
   if(!flag){
     game_blocks.appendChild(jump_block.element)
@@ -123,6 +127,8 @@ function createBlocks(game_blocks,flag){
 
 /**
  * Start of interval
+ * where the magic begins
+ * setInterval() - works like loop 
  */
 
   setInterval(function(){
@@ -134,23 +140,58 @@ function createBlocks(game_blocks,flag){
       createBlocks(game_blocks_two,false)
       game_blocks_two.style.left = width+'px';   
       game_blocks_two.style.top = "341px"
-      // game_blocks_one.style.left="0px";
+
+      jump_offset_one = game_blocks_one.childNodes[0].offsetLeft
+      jump_offset_two = game_blocks_two.childNodes[0].offsetLeft
     }else{
       // console.log("left two ",game_blocks_two.offsetLeft)
       if(!odd){
+        jump_offset_two -= adaptive_offset;
+        // game_blocks.childNodes[0]
+        console.log('platform number 2')
+
         if(game_blocks_two.offsetLeft < 0){
           game_blocks_two.style.top = "405px"
           createBlocks(game_blocks_one,true)
           game_blocks_one.style.left = game_blocks_two.offsetLeft+width+'px';
           game_blocks_one.style.top = "341px"
+
+          hole_offset_one = game_blocks_one.childNodes[1].offsetLeft
+          jump_offset_one = game_blocks_one.childNodes[0].offsetLeft
           odd=true
         }
       }else{
+        // jump_blcoks logic
+        jump_offset_one -= adaptive_offset
+        
+        if((jump_offset_one>ghost.getLeftPosition())
+        &&((ghost.getLeftPosition()+adaptive_offset)>jump_offset_one)){
+          
+          console.log(`platform : ${jump_offset_one}`)
+          console.log(`platform top: ${game_blocks_one.childNodes[0].offsetTop}`)
+          console.log(`ghost position: ${ghost.getLeftPosition()}`)
+          console.log(`ghost top position: ${ghost.getTopPosition()}`)
+          
+          
+          if(ghost.getTopPosition()<=game_blocks_one.childNodes[0].offsetTop){
+            console.log('you lost')
+          }
+        }
+
+        // hole logic
+        if((hole_offset_one<=ghost.getLeftPosition())&&(ghost.getTopPosition()==470)){
+          ghost.fall()
+          console.log('you lost')
+        }
+
         if(game_blocks_one.offsetLeft < 0){
           game_blocks_one.style.top = "405px"
           createBlocks(game_blocks_two,true)
           game_blocks_two.style.left = game_blocks_one.offsetLeft+width+'px';
           game_blocks_two.style.top = "341px"
+
+          hole_offset_two = game_blocks_two.childNodes[1].offsetLeft
+          jump_offset_two = game_blocks_two.childNodes[0].offsetLeft
           odd=false
         }
       }
@@ -160,13 +201,16 @@ function createBlocks(game_blocks,flag){
       setTimeout(()=>{
         game_blocks_one.style.left=game_blocks_one.offsetLeft-adaptive_offset+"px";
         game_blocks_two.style.left=game_blocks_two.offsetLeft-adaptive_offset+"px";
-        start=false
+        start=false  
       }, 1500)
     }else{
+      
       game_blocks_one.style.left=game_blocks_one.offsetLeft-adaptive_offset+"px";
       game_blocks_two.style.left=game_blocks_two.offsetLeft-adaptive_offset+"px";
     }
-      
+    
+    
+    
   },45)
 
 
@@ -210,6 +254,10 @@ class Entity{
     this.entity.style.top= "470px";
   }
 
+  fall(){
+    this.entity.style.top = "600px";
+  }
+
 }
 
 /**
@@ -241,7 +289,7 @@ class Ghost extends Entity{
 }
 
 const ghost = new Ghost('.ghost-wrapper')
-const boy = new Entity("#boy")
+const boy = new Entity(".boy-wrapper")
 
 
 
@@ -275,9 +323,11 @@ addEventListener('keydown', (e)=>{
 
 addEventListener('keyup', (e)=>{
   e = e || window.event
-  if ((e.keyCode == '38')||(e.keyCode =='87')) { 
+  if ((e.keyCode == '38')) { 
       setTimeout(ghost.moveDown(), 500)
-      // setTimeout(boy.moveDown(), 500)
+    }
+    if ((e.keyCode =='87')){
+      setTimeout(boy.moveDown(), 500)
    }
    else{
      clearInterval(interval)
