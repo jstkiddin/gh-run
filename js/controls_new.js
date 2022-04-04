@@ -10,11 +10,17 @@ let random_width,width
 
 
 if(window.screen.width>=1536){
-  width = 1536;
+  width = 1536
   random_width = 1500
+  adaptive_offset =10
 }else if((window.screen.width>1365)&&(window.screen.width<1536)){
-  width = 1366;
+  width = 1366
   random_width = 1300
+  adaptive_offset = 18
+}else if((window.screen.width>1024)&&(window.screen.width<1365)){
+  width = 1024
+  random_width = 100
+  adaptive_offset=30
 }
 
 /**
@@ -67,9 +73,9 @@ class Block{
   }
 }
 
-const hole = new Block('hole')
-const block = new Block('platform')
-const jump_block = new Block('platform')
+// const hole = new Block('hole')
+// const block = new Block('platform')
+// const jump_block = new Block('platform')
 
 
 function createBlocks(game_blocks,flag){
@@ -78,7 +84,7 @@ function createBlocks(game_blocks,flag){
   const jump_block = new Block('platform')
 
   let random_hole = Math.floor(Math.random()*random_width)
-  let random_jump
+  let random_jump = Math.floor(Math.random()*random_width)
   // hole white block
   
   hole.setClass()
@@ -88,14 +94,16 @@ function createBlocks(game_blocks,flag){
   
   block.setClass()
 
-
 // barrier block that you need to jump over
   
   jump_block.setClass()
   jump_block.setNewClass('jump')
+
+  // 
   while((random_jump+25>random_hole)&&(random_jump<random_hole+40)){
     random_jump = Math.floor(Math.random()*random_width)
   }
+
   jump_block.setLeftPosition(random_jump)
 
   if(!flag){
@@ -113,7 +121,9 @@ function createBlocks(game_blocks,flag){
 
 
 
-
+/**
+ * Start of interval
+ */
 
   setInterval(function(){
   
@@ -126,13 +136,12 @@ function createBlocks(game_blocks,flag){
       game_blocks_two.style.top = "341px"
       // game_blocks_one.style.left="0px";
     }else{
-      
       // console.log("left two ",game_blocks_two.offsetLeft)
       if(!odd){
         if(game_blocks_two.offsetLeft < 0){
           game_blocks_two.style.top = "405px"
           createBlocks(game_blocks_one,true)
-          game_blocks_one.style.left = game_blocks_two.offsetLeft+1536+'px';
+          game_blocks_one.style.left = game_blocks_two.offsetLeft+width+'px';
           game_blocks_one.style.top = "341px"
           odd=true
         }
@@ -140,7 +149,7 @@ function createBlocks(game_blocks,flag){
         if(game_blocks_one.offsetLeft < 0){
           game_blocks_one.style.top = "405px"
           createBlocks(game_blocks_two,true)
-          game_blocks_two.style.left = game_blocks_one.offsetLeft+1536+'px';
+          game_blocks_two.style.left = game_blocks_one.offsetLeft+width+'px';
           game_blocks_two.style.top = "341px"
           odd=false
         }
@@ -149,13 +158,13 @@ function createBlocks(game_blocks,flag){
     }
     if(start){
       setTimeout(()=>{
-        game_blocks_one.style.left=game_blocks_one.offsetLeft-10+"px";
-        game_blocks_two.style.left=game_blocks_two.offsetLeft-10+"px";
+        game_blocks_one.style.left=game_blocks_one.offsetLeft-adaptive_offset+"px";
+        game_blocks_two.style.left=game_blocks_two.offsetLeft-adaptive_offset+"px";
         start=false
       }, 1500)
     }else{
-      game_blocks_one.style.left=game_blocks_one.offsetLeft-10+"px";
-      game_blocks_two.style.left=game_blocks_two.offsetLeft-10+"px";
+      game_blocks_one.style.left=game_blocks_one.offsetLeft-adaptive_offset+"px";
+      game_blocks_two.style.left=game_blocks_two.offsetLeft-adaptive_offset+"px";
     }
       
   },45)
